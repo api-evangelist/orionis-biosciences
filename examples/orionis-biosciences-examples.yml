@@ -1,0 +1,160 @@
+generated: '2026-08-04'
+method: searched
+source: live anonymous requests against https://orionisbio.com/wp-json/wp/v2/ on 2026-08-04
+summary: >-
+  Real request/response pairs captured live from the orionisbio.com WordPress REST API. Every value
+  below was returned by the host; nothing is synthesized. Responses are trimmed with the `_fields`
+  parameter for readability, and the exact request that produced each one is shown.
+examples:
+- name: list-news-posts
+  operationId: getWpV2Posts
+  description: The most recent Orionis Biosciences news post.
+  request:
+    method: GET
+    url: https://orionisbio.com/wp-json/wp/v2/posts?per_page=1&_fields=id,date,slug,link,title,categories
+  response:
+    status: 200
+    headers:
+      X-WP-Total: '22'
+      X-WP-TotalPages: '22'
+    body:
+    - id: 1470
+      date: '2026-06-10T11:04:17'
+      slug: novartis-collaboration-2026
+      link: https://orionisbio.com/2026/06/novartis-collaboration-2026/
+      title:
+        rendered: Orionis Biosciences Announces Strategic Collaboration with Novartis to Discover
+          and Develop Molecular Glue Medicines
+      categories:
+      - 6
+- name: list-team-profiles
+  operationId: getWpV2OrionisTeam
+  description: >-
+    The `orionis_team` custom post type — leadership and scientific-team profiles. featured_media
+    points at the portrait in the media library.
+  request:
+    method: GET
+    url: https://orionisbio.com/wp-json/wp/v2/orionis_team?per_page=2&_fields=id,slug,link,title,featured_media
+  response:
+    status: 200
+    headers:
+      X-WP-Total: '15'
+    body:
+    - id: 1445
+      slug: giulio-draetta-md-ph-d
+      link: https://orionisbio.com/team/giulio-draetta-md-ph-d/
+      title:
+        rendered: Giulio Draetta, MD, Ph.D
+      featured_media: 1446
+    - id: 666
+      slug: robert-g-petit-ii-phd
+      link: https://orionisbio.com/team/robert-g-petit-ii-phd/
+      title:
+        rendered: Robert G. Petit II, PhD
+      featured_media: 667
+- name: list-platform-pages
+  operationId: getWpV2Pages
+  description: >-
+    Corporate and platform pages. `parent` shows the page hierarchy — 460 is the /platforms/ parent
+    page under which the MCE, Allo-Glue and A-Kine platform pages sit.
+  request:
+    method: GET
+    url: https://orionisbio.com/wp-json/wp/v2/pages?per_page=3&_fields=id,slug,link,title,parent
+  response:
+    status: 200
+    headers:
+      X-WP-Total: '16'
+    body:
+    - id: 1159
+      slug: mce-platform
+      link: https://orionisbio.com/platforms/mce-platform/
+      title:
+        rendered: MCE Cell Engager Platform
+      parent: 460
+    - id: 977
+      slug: pipeline
+      link: https://orionisbio.com/pipeline/
+      title:
+        rendered: Pipeline
+      parent: 0
+- name: list-categories
+  operationId: getWpV2Categories
+  description: The complete `category` taxonomy on this site — 5 terms.
+  request:
+    method: GET
+    url: https://orionisbio.com/wp-json/wp/v2/categories?_fields=id,name,slug,count
+  response:
+    status: 200
+    headers:
+      X-WP-Total: '5'
+    body:
+    - {id: 104, count: 1, name: BiotechTV, slug: biotechtv}
+    - {id: 105, count: 1, name: Fierce Biotech, slug: fierce-biotech}
+    - {id: 6, count: 3, name: Latest updates, slug: latest-updates}
+    - {id: 103, count: 4, name: Orionis Biosciences, slug: orionis-biosciences}
+    - {id: 1, count: 15, name: Uncategorized, slug: uncategorized}
+- name: site-search
+  operationId: getWpV2Search
+  description: >-
+    Site-wide search across posts, pages and team profiles. Returns a lightweight hit with an
+    embeddable self link to the full record.
+  request:
+    method: GET
+    url: https://orionisbio.com/wp-json/wp/v2/search?search=glue&per_page=1
+  response:
+    status: 200
+    headers:
+      X-WP-Total: '1'
+    body:
+    - id: 1470
+      title: Orionis Biosciences Announces Strategic Collaboration with Novartis to Discover and
+        Develop Molecular Glue Medicines
+      url: https://orionisbio.com/2026/06/novartis-collaboration-2026/
+      type: post
+      subtype: post
+- name: pagination-headers
+  operationId: getWpV2Posts
+  description: >-
+    Pagination is page-number based. Totals come back in X-WP-Total / X-WP-TotalPages and prev/next
+    are advertised in a standard RFC 5988 Link header.
+  request:
+    method: GET
+    url: https://orionisbio.com/wp-json/wp/v2/posts?per_page=2&page=2
+  response:
+    status: 200
+    headers:
+      X-WP-Total: '22'
+      X-WP-TotalPages: '11'
+      Link: <https://orionisbio.com/wp-json/wp/v2/posts?per_page=2&page=1>; rel="prev",
+        <https://orionisbio.com/wp-json/wp/v2/posts?per_page=2&page=3>; rel="next"
+      Access-Control-Expose-Headers: X-WP-Total, X-WP-TotalPages, Link
+- name: gated-abilities-registry
+  operationId: getWpAbilitiesV1Abilities
+  description: >-
+    The WordPress Abilities API registry is registered on this host but is not readable
+    anonymously — this is the error envelope the host returns.
+  request:
+    method: GET
+    url: https://orionisbio.com/wp-json/wp-abilities/v1/abilities
+  response:
+    status: 401
+    body:
+      code: rest_forbidden
+      message: Sorry, you are not allowed to do that.
+      data:
+        status: 401
+- name: firewall-block-on-users
+  operationId: getWpV2Users
+  description: >-
+    /wp/v2/users is registered but the Sucuri gateway in front of the origin returns an HTML 403
+    page rather than a JSON error envelope. Clients must not assume JSON on non-2xx.
+  request:
+    method: GET
+    url: https://orionisbio.com/wp-json/wp/v2/users
+  response:
+    status: 403
+    content_type: text/html
+    body_note: HTML firewall block page, not the WordPress JSON error envelope.
+x-evidence:
+  fetched: '2026-08-04'
+  method: anonymous HTTP GET, no credentials

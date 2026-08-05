@@ -1,0 +1,26 @@
+generated: '2026-08-04'
+method: derived
+source: openapi/orionis-biosciences-content-openapi.yml
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - header
+schemes:
+- name: applicationPassword
+  type: http
+  scheme: basic
+  description: WordPress Application Passwords (RFC 7617 Basic). The site advertises the authorization
+    endpoint https://orionisbio.com/wp-admin/authorize-application.php in its /wp-json/ root
+    document. Write access only; not issued to the public.
+  sources:
+  - openapi/orionis-biosciences-content-openapi.yml
+- name: cookieNonce
+  type: apiKey
+  in: header
+  parameter: X-WP-Nonce
+  description: WordPress cookie authentication with an X-WP-Nonce header (first-party browser
+    context only).
+  sources:
+  - openapi/orionis-biosciences-content-openapi.yml

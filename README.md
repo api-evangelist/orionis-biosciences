@@ -42,5 +42,12 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Orionis Biosciences is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
-- https://forgeglobal.com/orionis-biosciences_stock/
+Orionis Biosciences is a privately held biotechnology company headquartered in Waltham, Massachusetts, with a research site in Ghent, Belgium, developing precision medicines across molecular glues (Allo-Glue), conditional and cis-targeted cytokines (A-Kine) and multi-specific cell engagers (MCE).
+
+**Orionis Biosciences publishes no developer program, no product API and no OpenAPI of its own.** The only machine-readable surface on orionisbio.com is the WordPress REST API (`wp/v2`), which serves the company newsroom, corporate and platform pages, leadership and scientific-team profiles and the media library as anonymously readable JSON. The OpenAPI in `openapi/` was **derived** by API Evangelist from the host's own route-discovery document at <https://orionisbio.com/wp-json/> (preserved verbatim in `openapi/_original/`); it is not a specification Orionis publishes.
+
+- Company site: https://orionisbio.com/
+- News: https://orionisbio.com/news/
+- Platforms: https://orionisbio.com/platforms/
+- Pipeline: https://orionisbio.com/pipeline/
+- Secondary market listing: https://forgeglobal.com/orionis-biosciences_stock/

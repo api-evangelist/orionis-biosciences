@@ -1,0 +1,96 @@
+generated: '2026-08-04'
+method: derived
+source: >-
+  openapi/orionis-biosciences-content-openapi.yml, live response headers, and a search of
+  orionisbio.com for published compliance or certification claims
+summary: >-
+  Orionis Biosciences publishes no compliance program, no certifications and no standards
+  conformance claims on its public site — no trust center, no SOC 2 / ISO 27001 / HIPAA / GDPR
+  attestation page, and no security page. The conformance recorded below is what the WordPress REST
+  deployment on orionisbio.com objectively does, derived from the contract and observed responses.
+  No `Compliance` pointer is wired in apis.yml because no compliance program is published.
+standards:
+- id: rest
+  conforms: true
+  evidence: >-
+    Resource-oriented HTTP API with collection/item routes, standard verbs and JSON representations,
+    registered under versioned namespaces at /wp-json/.
+- id: wordpress-rest-api
+  conforms: true
+  evidence: >-
+    The host implements the WordPress REST API Handbook contract
+    (https://developer.wordpress.org/rest-api/) — wp/v2 namespace, self-describing route index,
+    _fields/_embed/_envelope, X-WP-Total pagination headers.
+- id: rfc5988-web-linking
+  conforms: true
+  evidence: 'Link header with rel="prev" / rel="next" observed on paginated collections.'
+- id: rfc7617-http-basic
+  conforms: true
+  evidence: >-
+    WordPress Application Passwords are presented as HTTP Basic; the authorization endpoint is
+    advertised in the /wp-json/ root document. Write paths only.
+- id: oembed
+  conforms: true
+  evidence: oembed/1.0 namespace registered with /embed and /proxy routes.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: >-
+    Errors use the WordPress envelope { code, message, data.status } with media type
+    application/json, not application/problem+json.
+- id: oauth2
+  conforms: false
+  evidence: No oauth2 securityScheme in the contract; /.well-known/oauth-authorization-server 404.
+- id: oidc
+  conforms: false
+  evidence: /.well-known/openid-configuration returns 404.
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: /.well-known/security.txt returns 404.
+- id: rfc9727-api-catalog
+  conforms: false
+  evidence: /.well-known/api-catalog returns 404.
+- id: rfc8594-sunset-header
+  conforms: false
+  evidence: No Sunset or Deprecation headers observed; no deprecation policy published.
+- id: openapi
+  conforms: false
+  evidence: >-
+    Orionis Biosciences publishes no OpenAPI. The definition in this repo is derived by API
+    Evangelist from the host's route index and is explicitly marked
+    x-not-a-provider-published-spec.
+- id: asyncapi
+  conforms: false
+  evidence: No event, streaming or webhook surface exists on this host — not applicable.
+- id: a2a
+  conforms: false
+  evidence: >-
+    No agent card at /.well-known/agent-card.json or /.well-known/agent.json (both 404).
+- id: mcp
+  conforms: false
+  evidence: >-
+    No MCP server — /wp-json/mcp, /mcp and /sse all 404. The wp-abilities/v1 registry is present
+    but returns 401 rest_forbidden anonymously.
+- id: json-schema
+  conforms: partial
+  evidence: >-
+    WordPress serves per-resource JSON Schema via HTTP OPTIONS, but OPTIONS is blocked by the
+    Sucuri firewall on this host (403), so the schema channel is unreachable anonymously.
+compliance_program:
+  published: false
+  certifications: []
+  trust_center: null
+  probed:
+  - url: https://trust.orionisbio.com/
+    result: DNS does not resolve
+  - url: https://security.orionisbio.com/
+    result: DNS does not resolve
+  - url: https://orionisbio.com/security/
+    status: 404
+  - url: https://orionisbio.com/.well-known/security.txt
+    status: 404
+  note: >-
+    Absence of a public compliance page is expected for a private clinical-stage biotech with no
+    developer program; it is recorded as observed fact, not as a finding against the company.
+x-evidence:
+  fetched: '2026-08-04'
+  method: anonymous HTTP and DNS probes

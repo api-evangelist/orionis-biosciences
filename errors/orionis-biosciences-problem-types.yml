@@ -1,0 +1,98 @@
+generated: '2026-08-04'
+method: derived
+source: openapi/orionis-biosciences-content-openapi.yml + live observed error responses
+format: wordpress-rest-error
+rfc9457: false
+envelope:
+  media_type: application/json
+  note: >-
+    The WordPress REST API does not use RFC 9457 problem+json. Every non-2xx response is a JSON
+    object with `code` (machine-readable slug), `message` (human-readable string) and
+    `data.status` (the HTTP status repeated in the body). Orionis Biosciences publishes no error
+    reference of its own; the codes below were observed live on orionisbio.com or are the standard
+    WordPress core codes for the registered routes.
+  fields:
+  - name: code
+    type: string
+    description: Machine-readable error slug, e.g. rest_forbidden.
+  - name: message
+    type: string
+    description: Human-readable message.
+  - name: data.status
+    type: integer
+    description: HTTP status code repeated in the body.
+problems:
+- status: 400
+  code: rest_invalid_param
+  title: Invalid parameter
+  detail: A query parameter failed the schema registered for the route (type, enum, minimum or maximum).
+  remediation: >-
+    Check the parameter against the OpenAPI — for example `per_page` is capped at 100 and `context`
+    accepts only view/embed on anonymous requests.
+  observed: false
+  source: openapi/orionis-biosciences-content-openapi.yml
+- status: 401
+  code: rest_forbidden
+  title: Not authenticated or not permitted
+  detail: >-
+    The route requires WordPress authentication. Observed live on
+    /wp-json/wp/v2/settings, /wp-json/wp-abilities/v1/abilities,
+    /wp-json/wp-abilities/v1/categories and /wp-json/yoast/v1/statistics.
+  remediation: >-
+    Authenticate with a WordPress Application Password over HTTP Basic. Credentials are not issued
+    to the public; these routes are administrative.
+  observed: true
+  observed_on:
+  - https://orionisbio.com/wp-json/wp/v2/settings
+  - https://orionisbio.com/wp-json/wp-abilities/v1/abilities
+- status: 401
+  code: rest_cannot_view_themes
+  title: Cannot view themes
+  detail: Observed live on /wp-json/wp/v2/themes for an anonymous caller.
+  observed: true
+- status: 401
+  code: rest_cannot_view_plugins
+  title: Cannot manage plugins
+  detail: Observed live on /wp-json/wp/v2/plugins for an anonymous caller.
+  observed: true
+- status: 401
+  code: rest_cannot_view
+  title: Cannot view resource
+  detail: Observed live on /wp-json/wp/v2/menus for an anonymous caller.
+  observed: true
+- status: 403
+  code: firewall-block
+  title: Blocked by the site firewall
+  detail: >-
+    orionisbio.com sits behind a Sucuri gateway that returns an HTML 403 page — not a JSON error
+    envelope — for some request shapes. Observed on HTTP OPTIONS to every /wp/v2 collection and on
+    GET /wp-json/wp/v2/users. Callers must handle a non-JSON body on 403.
+  remediation: >-
+    Use GET rather than OPTIONS for discovery; the route index at /wp-json/ carries the same
+    parameter metadata that OPTIONS would return.
+  observed: true
+  observed_on:
+  - https://orionisbio.com/wp-json/wp/v2/users
+  - OPTIONS https://orionisbio.com/wp-json/wp/v2/posts
+- status: 404
+  code: rest_no_route
+  title: No route found
+  detail: >-
+    No route matched the URL and request method. Observed live on /wp-json/wpaas/v1/diagnostics and
+    on the MCP probes /wp-json/mcp and /wp-json/mcp/mcp-adapter-default-server.
+  observed: true
+- status: 404
+  code: rest_post_invalid_id
+  title: Invalid post ID
+  detail: A single-resource route was called with an id that does not exist or is not published.
+  observed: false
+  source: openapi/orionis-biosciences-content-openapi.yml
+- status: 404
+  code: rest_term_invalid
+  title: Invalid taxonomy term ID
+  detail: A taxonomy single-resource route was called with an unknown term id.
+  observed: false
+  source: openapi/orionis-biosciences-content-openapi.yml
+x-evidence:
+  fetched: '2026-08-04'
+  method: anonymous HTTP requests against https://orionisbio.com/wp-json/

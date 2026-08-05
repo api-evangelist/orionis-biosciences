@@ -1,0 +1,145 @@
+generated: '2026-08-04'
+method: derived
+source: >-
+  openapi/orionis-biosciences-content-openapi.yml plus live observed records and their `_links`
+  relations on https://orionisbio.com/wp-json/wp/v2/
+summary: >-
+  The entity graph of the orionisbio.com WordPress content API. Six public entities, all linked by
+  integer ids carried in the record body and mirrored in the HAL-style `_links` block that every
+  record returns. Ids are plain integers — this host uses no prefixed id scheme.
+id_scheme:
+  form: integer
+  prefixed: false
+  note: >-
+    Ids are unique across the shared WordPress post table, so a post, a page and an
+    orionis_team profile never share an id (observed: post 1470, page 1159, team 1445, media 1471).
+entities:
+- name: Post
+  rest_base: posts
+  path: /wp/v2/posts
+  schema: '#/components/schemas/Post'
+  count_observed: 22
+  description: A company news post. The Orionis newsroom.
+  key_fields: [id, slug, date, modified, status, link, title.rendered, content.rendered,
+    excerpt.rendered, author, featured_media, categories, tags, meta, acf, yoast_head_json]
+- name: Page
+  rest_base: pages
+  path: /wp/v2/pages
+  schema: '#/components/schemas/Page'
+  count_observed: 16
+  description: >-
+    A corporate or platform page — Allo-Glue, A-Kine, MCE Cell Engager, Pipeline, About Us,
+    Executive Team, Board of Directors, and the legal pages.
+  key_fields: [id, slug, parent, menu_order, link, title.rendered, content.rendered, featured_media,
+    template, acf]
+- name: TeamMember
+  rest_base: orionis_team
+  path: /wp/v2/orionis_team
+  schema: '#/components/schemas/TeamMember'
+  count_observed: 15
+  description: >-
+    A leadership or scientific-team profile, registered as the site's one custom post type. Carries
+    a rendered biography in content.rendered and a portrait via featured_media.
+  key_fields: [id, slug, link, title.rendered, content.rendered, excerpt.rendered, featured_media,
+    parent, acf]
+- name: MediaItem
+  rest_base: media
+  path: /wp/v2/media
+  schema: '#/components/schemas/MediaItem'
+  count_observed: 208
+  description: An attachment in the media library — images, documents, portraits, logos.
+  key_fields: [id, slug, source_url, media_type, mime_type, media_details, alt_text, caption.rendered,
+    description.rendered, post]
+- name: Category
+  rest_base: categories
+  path: /wp/v2/categories
+  schema: '#/components/schemas/Category'
+  count_observed: 5
+  description: A `category` taxonomy term applied to posts (e.g. BiotechTV).
+  key_fields: [id, name, slug, count, parent, taxonomy, link]
+- name: Tag
+  rest_base: tags
+  path: /wp/v2/tags
+  schema: '#/components/schemas/Tag'
+  count_observed: 0
+  description: >-
+    A `post_tag` taxonomy term. The collection is registered and returns HTTP 200 with an empty
+    array — the site publishes no tags.
+- name: SearchResult
+  rest_base: search
+  path: /wp/v2/search
+  schema: '#/components/schemas/SearchResult'
+  description: >-
+    A lightweight projection (id, title, url, type, subtype) over Post, Page and TeamMember, with an
+    embeddable `_links.self` pointer to the full record.
+  virtual: true
+relationships:
+- from: Post
+  to: MediaItem
+  kind: has_one
+  via: featured_media
+  link_rel: wp:featuredmedia
+  note: 0 means no featured image.
+- from: Post
+  to: Category
+  kind: has_many
+  via: categories
+  link_rel: wp:term
+- from: Post
+  to: Tag
+  kind: has_many
+  via: tags
+  link_rel: wp:term
+- from: Post
+  to: User
+  kind: belongs_to
+  via: author
+  link_rel: author
+  note: >-
+    The author id is present on every post, but /wp/v2/users returns HTTP 403 from the site
+    firewall, so the User entity cannot be dereferenced anonymously.
+- from: Page
+  to: Page
+  kind: belongs_to
+  via: parent
+  link_rel: up
+  note: 'Observed hierarchy: /platforms/ is the parent of the three platform pages, /about-us/ of
+    the executive-team and board-of-directors pages.'
+- from: Page
+  to: MediaItem
+  kind: has_one
+  via: featured_media
+  link_rel: wp:featuredmedia
+- from: TeamMember
+  to: MediaItem
+  kind: has_one
+  via: featured_media
+  link_rel: wp:featuredmedia
+- from: MediaItem
+  to: Post
+  kind: belongs_to
+  via: post
+  link_rel: about
+  note: The post, page or team profile the attachment was uploaded to. 0 when unattached.
+- from: Category
+  to: Category
+  kind: belongs_to
+  via: parent
+  link_rel: up
+- from: SearchResult
+  to: Post
+  kind: has_one
+  via: id + subtype
+  link_rel: self
+  note: subtype resolves which collection to dereference (post, page, orionis_team).
+traversal:
+  embed: >-
+    Adding `_embed` to any collection or item request inlines the linked author, featured media and
+    terms into an `_embedded` object, resolving most of this graph in a single call.
+  links_block: >-
+    Every record carries a `_links` object with self/collection/about/author/wp:featuredmedia/
+    wp:term/wp:attachment relations, each with an href and, where inlineable, embeddable: true.
+render: null
+x-evidence:
+  fetched: '2026-08-04'
+  method: anonymous GET of one record per collection plus X-WP-Total headers

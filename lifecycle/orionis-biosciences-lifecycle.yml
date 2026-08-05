@@ -1,0 +1,68 @@
+generated: '2026-08-04'
+method: searched
+source: >-
+  https://orionisbio.com/ (site sweep), https://orionisbio.com/wp-json/ (route index),
+  live probes on 2026-08-04
+summary: >-
+  Orionis Biosciences runs no developer program, so it publishes no API versioning policy, no
+  deprecation policy, no SLA, no status page and no changelog. The versioning below is inherited
+  from WordPress core, not authored by Orionis. Nothing here is a gap the company has left open in
+  a developer contract — there is no developer contract.
+versioning:
+  scheme: uri-path-namespace
+  current: wp/v2
+  policy_published: false
+  docs: https://developer.wordpress.org/rest-api/
+  note: >-
+    The /wp-json/<namespace>/<version> form is a WordPress core convention. Orionis publishes no
+    statement about how or when it would move off wp/v2.
+deprecation:
+  policy_url: null
+  policy_published: false
+  sunset_header: false
+  deprecation_header: false
+  note: RFC 8594 Sunset / Deprecation headers were not observed on any response.
+deprecated_operations: []
+sla:
+  url: null
+  uptime_target: null
+  published: false
+status_page:
+  url: null
+  published: false
+  probed:
+  - url: https://status.orionisbio.com/
+    result: DNS does not resolve
+  - url: https://orionisbio.com/status/
+    result: 404
+changelog:
+  url: null
+  published: false
+  note: >-
+    No dated API or product changelog. The nearest published dated surface is the company newsroom
+    at https://orionisbio.com/news/ (22 posts, RSS at https://orionisbio.com/feed/), which is
+    corporate news rather than a release log.
+content_freshness:
+  most_recent_post: '2026-06-10'
+  most_recent_post_title: Orionis Biosciences Announces Strategic Collaboration with Novartis to
+    Discover and Develop Molecular Glue Medicines
+  page_sitemap_lastmod: '2026-07-07'
+  source: https://orionisbio.com/sitemap_index.xml
+  note: >-
+    Derived from the live wp/v2/posts collection and the Yoast sitemap index — the only dated
+    machine-readable signal of how current this surface is.
+platform_lifecycle:
+  runtime: WordPress
+  edge: Sucuri Cloudproxy
+  note: >-
+    API lifecycle on this host follows the WordPress core release train and the managed-hosting
+    platform, both outside Orionis Biosciences' publication.
+x-evidence:
+  fetched: '2026-08-04'
+  urls:
+  - url: https://orionisbio.com/wp-json/
+    status: 200
+  - url: https://orionisbio.com/sitemap_index.xml
+    status: 200
+  - url: https://orionisbio.com/status/
+    status: 404

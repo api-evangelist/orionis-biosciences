@@ -1,0 +1,62 @@
+generated: '2026-08-04'
+method: probed
+source: live GET probes of https://orionisbio.com/.well-known/*
+host: https://orionisbio.com
+summary: >-
+  No /.well-known/ discovery document is published on orionisbio.com. Every probed path returned
+  HTTP 404 with an HTML body from the site firewall/CMS 404 handler — there is no security.txt
+  (RFC 9116), no OIDC or OAuth authorization-server metadata, no api-catalog (RFC 9727), no
+  ai-plugin.json, and no A2A agent card at either the canonical /.well-known/agent-card.json or
+  the legacy /.well-known/agent.json path. The site is a WordPress marketing site behind a Sucuri
+  gateway; its only machine-readable discovery surface is the WordPress REST route index at
+  /wp-json/, which is captured in openapi/.
+documents:
+- path: /.well-known/security.txt
+  status: 404
+  note: RFC 9116 — not published
+- path: /.well-known/openid-configuration
+  status: 404
+- path: /.well-known/oauth-authorization-server
+  status: 404
+  note: RFC 8414 — not published
+- path: /.well-known/oauth-protected-resource
+  status: 404
+  note: RFC 9728 — not published
+- path: /.well-known/api-catalog
+  status: 404
+  note: RFC 9727 — not published
+- path: /.well-known/ai-plugin.json
+  status: 404
+- path: /.well-known/agent-card.json
+  status: 404
+  note: A2A 1.0.0 canonical path — no agent card
+- path: /.well-known/agent.json
+  status: 404
+  note: pre-0.3 legacy agent-card path — no agent card
+- path: /.well-known/mcp.json
+  status: 404
+- path: /.well-known/change-password
+  status: 404
+- path: /.well-known/did.json
+  status: 404
+- path: /.well-known/apple-app-site-association
+  status: 404
+- path: /.well-known/assetlinks.json
+  status: 404
+related_probes:
+- url: https://orionisbio.com/llms.txt
+  status: 301
+  note: WordPress trailing-slash redirect to /llms.txt/, which returns 404 — no llms.txt published
+- url: https://orionisbio.com/robots.txt
+  status: 200
+  note: 'permissive — "User-Agent: * / Disallow:" (nothing disallowed, no AI-crawler directives)'
+- url: https://orionisbio.com/sitemap_index.xml
+  status: 200
+  note: Yoast SEO sitemap index (post-sitemap.xml + page-sitemap.xml)
+- url: https://orionisbio.com/wp-json/
+  status: 200
+  note: WordPress REST route index — the one machine-readable contract on this host
+x-evidence:
+  fetched: '2026-08-04'
+  host: orionisbio.com
+  method: HTTP GET, no credentials

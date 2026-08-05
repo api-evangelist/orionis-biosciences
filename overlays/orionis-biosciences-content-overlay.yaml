@@ -1,0 +1,69 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Orionis Biosciences Website Content API
+  version: 1.0.0
+extends: openapi/orionis-biosciences-content-openapi.yml
+x-generated: '2026-08-04'
+x-method: generated
+x-source: openapi/orionis-biosciences-content-openapi.yml
+actions:
+- target: $.info
+  description: Record the API Evangelist provenance of this definition on the document itself.
+  update:
+    x-apievangelist-profile: https://apis.io/providers/orionis-biosciences/
+    x-apievangelist-derived: true
+    x-apievangelist-derived-from: https://orionisbio.com/wp-json/
+    x-apievangelist-surface: cms-content
+- target: $.info
+  description: >-
+    Flag that this is a CMS content API rather than a product API, so consumers and agents do not
+    mistake it for an Orionis Biosciences drug-discovery or scientific data API.
+  update:
+    x-api-classification: website-content
+    x-provider-developer-program: false
+- target: $.paths['/wp/v2/posts'].get
+  description: Name the newsroom collection in business terms.
+  update:
+    summary: List Orionis Biosciences news posts
+    description: >-
+      Returns the company newsroom as JSON — 22 published posts at the time of harvest, including
+      the Genentech and Novartis collaboration announcements and leadership appointments. Sorted by
+      date descending by default. Totals are returned in the X-WP-Total and X-WP-TotalPages headers.
+- target: $.paths['/wp/v2/orionis_team'].get
+  description: Name the custom post type that carries leadership and scientific-team profiles.
+  update:
+    summary: List Orionis Biosciences leadership and scientific-team profiles
+    description: >-
+      Returns the `orionis_team` custom post type — 15 published profiles covering senior management,
+      scientific leadership and the board, each with a title, rendered biography content and a
+      featured image reference.
+- target: $.paths['/wp/v2/pages'].get
+  description: Name the page collection and what it carries.
+  update:
+    summary: List Orionis Biosciences corporate and platform pages
+    description: >-
+      Returns the 16 published pages, including the Allo-Glue, A-Kine and MCE Cell Engager platform
+      pages, the pipeline page, about/leadership/board pages and the legal pages.
+- target: $.paths['/wp/v2/search'].get
+  description: Name the site-search endpoint.
+  update:
+    summary: Search Orionis Biosciences site content
+    description: >-
+      Site-wide search across posts, pages and `orionis_team` profiles. Returns lightweight hits
+      (id, title, url, type, subtype) with embeddable `_links.self` pointers to the full record.
+- target: $.paths['/wp-abilities/v1/abilities'].get
+  description: Record that the WordPress Abilities registry is present but authentication-gated.
+  update:
+    x-gated: true
+    x-observed-anonymous-status: 401
+    description: >-
+      The WordPress Abilities API registry — the surface a WordPress MCP adapter exposes as agent
+      tools. Registered on this host but returns HTTP 401 `rest_forbidden` to anonymous callers, so
+      the published ability set could not be enumerated without credentials.
+- target: $.components.schemas.Post
+  description: Note the derivation channel for the response schemas.
+  update:
+    x-schema-source: live-response-observation
+    x-schema-note: >-
+      HTTP OPTIONS — the usual WordPress schema channel — is blocked by the site firewall on this
+      host (403), so properties were derived from an observed live response on 2026-08-04.

@@ -1,0 +1,70 @@
+generated: '2026-08-04'
+method: derived
+status: candidate
+source: openapi/orionis-biosciences-content-openapi.yml
+note: >-
+  Orionis Biosciences publishes NO MCP server. Probed /wp-json/mcp, /wp-json/mcp/mcp-adapter-default-server,
+  /mcp and /sse on orionisbio.com — all HTTP 404. Searched the public MCP registries, npm
+  (@modelcontextprotocol and orionis/orionisbio) and GitHub; nothing exists. The `wp-abilities/v1`
+  namespace — the WordPress Abilities registry that a WordPress MCP adapter projects as tools — IS
+  registered on this host, but returns HTTP 401 `rest_forbidden` to anonymous callers, so no ability
+  or tool set could be enumerated. The tools below are a CANDIDATE surface derived one-per-read-operation
+  from the derived content OpenAPI: what an MCP server over this site's content API could expose, with
+  each tool's real input schema inherited from the referenced operation's parameters. This is a design
+  artifact, not a provider claim — NO MCPServer pointer is wired into apis.yml, and none should be
+  until Orionis Biosciences actually ships one.
+server:
+  published: false
+  url: null
+  transport: null
+probes:
+- url: https://orionisbio.com/wp-json/mcp
+  method: POST tools/list
+  http_status: 404
+- url: https://orionisbio.com/wp-json/mcp/mcp-adapter-default-server
+  method: POST tools/list
+  http_status: 404
+- url: https://orionisbio.com/mcp
+  method: POST tools/list
+  http_status: 404
+- url: https://orionisbio.com/sse
+  method: POST tools/list
+  http_status: 404
+- url: https://orionisbio.com/.well-known/mcp.json
+  method: GET
+  http_status: 404
+- url: https://orionisbio.com/wp-json/wp-abilities/v1/abilities
+  method: GET
+  http_status: 401
+  note: registered but auth-gated (rest_forbidden)
+candidate_tools:
+- name: search_orionis_site
+  description: Search Orionis Biosciences site content (news posts, pages, team profiles) by keyword.
+  source_operation: openapi/orionis-biosciences-content-openapi.yml#getWpV2Search
+- name: list_news_posts
+  description: List Orionis Biosciences news posts, filterable by date, category and search term.
+  source_operation: openapi/orionis-biosciences-content-openapi.yml#getWpV2Posts
+- name: get_news_post
+  description: Retrieve one news post by id, including its rendered content.
+  source_operation: openapi/orionis-biosciences-content-openapi.yml#getWpV2PostsById
+- name: list_pages
+  description: List corporate and platform pages (Allo-Glue, A-Kine, MCE Cell Engager, Pipeline).
+  source_operation: openapi/orionis-biosciences-content-openapi.yml#getWpV2Pages
+- name: get_page
+  description: Retrieve one page by id, including its rendered content.
+  source_operation: openapi/orionis-biosciences-content-openapi.yml#getWpV2PagesById
+- name: list_team_members
+  description: List leadership and scientific-team profiles from the orionis_team custom post type.
+  source_operation: openapi/orionis-biosciences-content-openapi.yml#getWpV2OrionisTeam
+- name: get_team_member
+  description: Retrieve one team profile by id, including the rendered biography.
+  source_operation: openapi/orionis-biosciences-content-openapi.yml#getWpV2OrionisTeamById
+- name: list_media
+  description: List media-library items with source URLs, MIME types and alt text.
+  source_operation: openapi/orionis-biosciences-content-openapi.yml#getWpV2Media
+- name: list_categories
+  description: List the category taxonomy terms used to classify news posts.
+  source_operation: openapi/orionis-biosciences-content-openapi.yml#getWpV2Categories
+x-evidence:
+  fetched: '2026-08-04'
+  method: anonymous JSON-RPC POST and HTTP GET probes
