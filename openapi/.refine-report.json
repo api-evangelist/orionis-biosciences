@@ -1,0 +1,49 @@
+{
+  "provider": "orionis-biosciences",
+  "sources": [
+    "orionis-biosciences-abilities-api-openapi.yml",
+    "orionis-biosciences-comments-api-openapi.yml",
+    "orionis-biosciences-discovery-api-openapi.yml",
+    "orionis-biosciences-media-api-openapi.yml",
+    "orionis-biosciences-news-api-openapi.yml",
+    "orionis-biosciences-oembed-api-openapi.yml",
+    "orionis-biosciences-pages-api-openapi.yml",
+    "orionis-biosciences-search-api-openapi.yml",
+    "orionis-biosciences-taxonomy-api-openapi.yml",
+    "orionis-biosciences-team-api-openapi.yml",
+    "orionis-biosciences-users-api-openapi.yml"
+  ],
+  "outputs": [
+    "orionis-biosciences-abilities-api-openapi.yml",
+    "orionis-biosciences-comments-api-openapi.yml",
+    "orionis-biosciences-discovery-api-openapi.yml",
+    "orionis-biosciences-media-api-openapi.yml",
+    "orionis-biosciences-news-api-openapi.yml",
+    "orionis-biosciences-oembed-api-openapi.yml",
+    "orionis-biosciences-pages-api-openapi.yml",
+    "orionis-biosciences-search-api-openapi.yml",
+    "orionis-biosciences-taxonomy-api-openapi.yml",
+    "orionis-biosciences-team-api-openapi.yml",
+    "orionis-biosciences-users-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [
+    "orionis-biosciences-search-api-openapi.yml: dangling $ref: #/components/schemas/SearchResult"
+  ],
+  "warnings": [],
+  "notes": [
+    "orionis-biosciences-abilities-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "orionis-biosciences-comments-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "orionis-biosciences-discovery-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "orionis-biosciences-media-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "orionis-biosciences-news-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "orionis-biosciences-oembed-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "orionis-biosciences-pages-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "orionis-biosciences-search-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "orionis-biosciences-taxonomy-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "orionis-biosciences-team-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "orionis-biosciences-users-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": []
+}

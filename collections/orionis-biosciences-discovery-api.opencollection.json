@@ -1,0 +1,197 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Orionis Biosciences Website Content API (WordPress REST) Discovery API",
+    "version": "wp/v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Discovery",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://orionisbio.com/wp-json/",
+            "params": [
+              {
+                "name": "context",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "GET /"
+        },
+        {
+          "info": {
+            "name": "GET /wp/v2",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://orionisbio.com/wp-json/wp/v2",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "context",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "GET /wp/v2"
+        },
+        {
+          "info": {
+            "name": "GET /wp/v2/types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://orionisbio.com/wp-json/wp/v2/types",
+            "params": [
+              {
+                "name": "context",
+                "value": "",
+                "type": "query",
+                "description": "Scope under which the request is made; determines fields present in response."
+              }
+            ]
+          },
+          "docs": "GET /wp/v2/types"
+        },
+        {
+          "info": {
+            "name": "GET /wp/v2/types/{type}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://orionisbio.com/wp-json/wp/v2/types/:type",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path",
+                "description": "Path segment `type` from the WordPress route pattern `/wp/v2/types/(?P<type>[\\w-]+)`."
+              },
+              {
+                "name": "context",
+                "value": "",
+                "type": "query",
+                "description": "Scope under which the request is made; determines fields present in response."
+              }
+            ]
+          },
+          "docs": "GET /wp/v2/types/{type}"
+        },
+        {
+          "info": {
+            "name": "GET /wp/v2/statuses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://orionisbio.com/wp-json/wp/v2/statuses",
+            "params": [
+              {
+                "name": "context",
+                "value": "",
+                "type": "query",
+                "description": "Scope under which the request is made; determines fields present in response."
+              }
+            ]
+          },
+          "docs": "GET /wp/v2/statuses"
+        },
+        {
+          "info": {
+            "name": "GET /wp/v2/statuses/{status}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://orionisbio.com/wp-json/wp/v2/statuses/:status",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "path",
+                "description": "Path segment `status` from the WordPress route pattern `/wp/v2/statuses/(?P<status>[\\w-]+)`."
+              },
+              {
+                "name": "context",
+                "value": "",
+                "type": "query",
+                "description": "Scope under which the request is made; determines fields present in response."
+              }
+            ]
+          },
+          "docs": "GET /wp/v2/statuses/{status}"
+        },
+        {
+          "info": {
+            "name": "GET /wp/v2/taxonomies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://orionisbio.com/wp-json/wp/v2/taxonomies",
+            "params": [
+              {
+                "name": "context",
+                "value": "",
+                "type": "query",
+                "description": "Scope under which the request is made; determines fields present in response."
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Limit results to taxonomies associated with a specific post type."
+              }
+            ]
+          },
+          "docs": "GET /wp/v2/taxonomies"
+        },
+        {
+          "info": {
+            "name": "GET /wp/v2/taxonomies/{taxonomy}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://orionisbio.com/wp-json/wp/v2/taxonomies/:taxonomy",
+            "params": [
+              {
+                "name": "taxonomy",
+                "value": "",
+                "type": "path",
+                "description": "Path segment `taxonomy` from the WordPress route pattern `/wp/v2/taxonomies/(?P<taxonomy>[\\w-]+)`."
+              },
+              {
+                "name": "context",
+                "value": "",
+                "type": "query",
+                "description": "Scope under which the request is made; determines fields present in response."
+              }
+            ]
+          },
+          "docs": "GET /wp/v2/taxonomies/{taxonomy}"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

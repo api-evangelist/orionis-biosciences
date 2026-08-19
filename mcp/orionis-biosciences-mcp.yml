@@ -2,17 +2,15 @@ generated: '2026-08-04'
 method: derived
 status: candidate
 source: openapi/orionis-biosciences-content-openapi.yml
-note: >-
-  Orionis Biosciences publishes NO MCP server. Probed /wp-json/mcp, /wp-json/mcp/mcp-adapter-default-server,
-  /mcp and /sse on orionisbio.com — all HTTP 404. Searched the public MCP registries, npm
-  (@modelcontextprotocol and orionis/orionisbio) and GitHub; nothing exists. The `wp-abilities/v1`
-  namespace — the WordPress Abilities registry that a WordPress MCP adapter projects as tools — IS
-  registered on this host, but returns HTTP 401 `rest_forbidden` to anonymous callers, so no ability
-  or tool set could be enumerated. The tools below are a CANDIDATE surface derived one-per-read-operation
-  from the derived content OpenAPI: what an MCP server over this site's content API could expose, with
-  each tool's real input schema inherited from the referenced operation's parameters. This is a design
-  artifact, not a provider claim — NO MCPServer pointer is wired into apis.yml, and none should be
-  until Orionis Biosciences actually ships one.
+note: 'Orionis Biosciences publishes NO MCP server. Probed /wp-json/mcp, /wp-json/mcp/mcp-adapter-default-server,
+  /mcp and /sse on orionisbio.com — all HTTP 404. Searched the public MCP registries, npm (@modelcontextprotocol
+  and orionis/orionisbio) and GitHub; nothing exists. The `wp-abilities/v1` namespace — the WordPress
+  Abilities registry that a WordPress MCP adapter projects as tools — IS registered on this host, but
+  returns HTTP 401 `rest_forbidden` to anonymous callers, so no ability or tool set could be enumerated.
+  The tools below are a CANDIDATE surface derived one-per-read-operation from the derived content OpenAPI:
+  what an MCP server over this site''s content API could expose, with each tool''s real input schema inherited
+  from the referenced operation''s parameters. This is a design artifact, not a provider claim — NO MCPServer
+  pointer is wired into apis.yml, and none should be until Orionis Biosciences actually ships one.'
 server:
   published: false
   url: null
@@ -68,3 +66,8 @@ candidate_tools:
 x-evidence:
   fetched: '2026-08-04'
   method: anonymous JSON-RPC POST and HTTP GET probes
+deployment:
+  mode: none
+  verified: derived
+  checked: '2026-08-12'
+  source: catalog MCP census
