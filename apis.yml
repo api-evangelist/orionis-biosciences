@@ -35,6 +35,20 @@ tags:
 - Protein Engineering
 - Molecular Glues
 - Computational Biology
+- Machine-Learning
+- Clinical Trials
+- Content
+tags_raw:
+- Company
+- Biotechnology
+- Life Sciences
+- Drug Discovery
+- Pharmaceuticals
+- Oncology
+- Immunotherapy
+- Protein Engineering
+- Molecular Glues
+- Computational Biology
 - Machine Learning
 - Clinical Trials
 - Content
@@ -205,6 +219,8 @@ apis:
   humanURL: https://orionisbio.com/news/
   baseURL: https://orionisbio.com/wp-json/wp/v2
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
