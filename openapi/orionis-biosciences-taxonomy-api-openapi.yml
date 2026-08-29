@@ -1006,25 +1006,24 @@ paths:
       - cookieNonce: []
 components:
   schemas:
-    Tag:
+    WPError:
       type: object
-      description: A `post_tag` taxonomy term. The tags collection is registered on this host and returns HTTP 200 with an empty array (0 terms published).
+      description: The WordPress REST API error envelope (not RFC 9457). Observed live on this host.
       properties:
-        id:
-          type: integer
-        count:
-          type: integer
-        description:
+        code:
           type: string
-        link:
+          description: Machine-readable error code, e.g. rest_forbidden.
+        message:
           type: string
-          format: uri
-        name:
-          type: string
-        slug:
-          type: string
-        taxonomy:
-          type: string
+          description: Human-readable message.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+      required:
+      - code
+      - message
     Category:
       type: object
       properties:
@@ -1082,24 +1081,25 @@ components:
           type: object
           description: HAL-style link relations for this resource.
       description: A `category` taxonomy term (5 terms). Properties derived from a live response observed on 2026-08-04 (HTTP OPTIONS is blocked by the site firewall on this host).
-    WPError:
+    Tag:
       type: object
-      description: The WordPress REST API error envelope (not RFC 9457). Observed live on this host.
+      description: A `post_tag` taxonomy term. The tags collection is registered on this host and returns HTTP 200 with an empty array (0 terms published).
       properties:
-        code:
+        id:
+          type: integer
+        count:
+          type: integer
+        description:
           type: string
-          description: Machine-readable error code, e.g. rest_forbidden.
-        message:
+        link:
           type: string
-          description: Human-readable message.
-        data:
-          type: object
-          properties:
-            status:
-              type: integer
-      required:
-      - code
-      - message
+          format: uri
+        name:
+          type: string
+        slug:
+          type: string
+        taxonomy:
+          type: string
   securitySchemes:
     applicationPassword:
       type: http

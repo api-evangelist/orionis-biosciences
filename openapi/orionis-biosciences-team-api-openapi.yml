@@ -768,6 +768,24 @@ paths:
       - cookieNonce: []
 components:
   schemas:
+    WPError:
+      type: object
+      description: The WordPress REST API error envelope (not RFC 9457). Observed live on this host.
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code, e.g. rest_forbidden.
+        message:
+          type: string
+          description: Human-readable message.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+      required:
+      - code
+      - message
     TeamMember:
       type: object
       properties:
@@ -869,24 +887,6 @@ components:
           type: object
           description: HAL-style link relations for this resource.
       description: A leadership / scientific-team profile (`orionis_team` custom post type, 15 published). Properties derived from a live response observed on 2026-08-04 (HTTP OPTIONS is blocked by the site firewall on this host).
-    WPError:
-      type: object
-      description: The WordPress REST API error envelope (not RFC 9457). Observed live on this host.
-      properties:
-        code:
-          type: string
-          description: Machine-readable error code, e.g. rest_forbidden.
-        message:
-          type: string
-          description: Human-readable message.
-        data:
-          type: object
-          properties:
-            status:
-              type: integer
-      required:
-      - code
-      - message
   securitySchemes:
     applicationPassword:
       type: http

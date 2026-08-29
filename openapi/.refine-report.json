@@ -32,17 +32,6 @@
   ],
   "warnings": [],
   "notes": [
-    "orionis-biosciences-abilities-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "orionis-biosciences-comments-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "orionis-biosciences-discovery-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "orionis-biosciences-media-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "orionis-biosciences-news-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "orionis-biosciences-oembed-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "orionis-biosciences-pages-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "orionis-biosciences-search-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "orionis-biosciences-taxonomy-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "orionis-biosciences-team-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "orionis-biosciences-users-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
   "skipped": []
