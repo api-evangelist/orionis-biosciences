@@ -159,22 +159,6 @@ apis:
     url: errors/orionis-biosciences-problem-types.yml
   - type: Examples
     url: examples/orionis-biosciences-examples.yml
-- aid: orionis-biosciences:orionis-biosciences-oembed-api
-  name: Orionis Biosciences O Embed API
-  description: The oEmbed API from Orionis Biosciences — 3 operation(s) for oembed.
-  humanURL: https://orionisbio.com/news/
-  baseURL: https://orionisbio.com/wp-json/wp/v2
-  tags:
-  - oEmbed
-  properties:
-  - type: OpenAPI
-    url: openapi/orionis-biosciences-oembed-api-openapi.yml
-  - type: DataModel
-    url: data-model/orionis-biosciences-data-model.yml
-  - type: ErrorCatalog
-    url: errors/orionis-biosciences-problem-types.yml
-  - type: Examples
-    url: examples/orionis-biosciences-examples.yml
 - aid: orionis-biosciences:orionis-biosciences-pages-api
   name: Orionis Biosciences Pages API
   description: The Pages API from Orionis Biosciences — 2 operation(s) for pages.
@@ -251,6 +235,22 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/orionis-biosciences-users-api-openapi.yml
+  - type: DataModel
+    url: data-model/orionis-biosciences-data-model.yml
+  - type: ErrorCatalog
+    url: errors/orionis-biosciences-problem-types.yml
+  - type: Examples
+    url: examples/orionis-biosciences-examples.yml
+- aid: orionis-biosciences:orionis-biosciences-o-embed-api
+  name: Orionis Biosciences o Embed API
+  description: The o Embed API from Orionis Biosciences — 3 operation(s) for o embed.
+  humanURL: https://orionisbio.com/news/
+  baseURL: https://orionisbio.com/wp-json/wp/v2
+  tags:
+  - o Embed
+  properties:
+  - type: OpenAPI
+    url: openapi/orionis-biosciences-o-embed-api-openapi.yml
   - type: DataModel
     url: data-model/orionis-biosciences-data-model.yml
   - type: ErrorCatalog
