@@ -247,6 +247,8 @@ apis:
   humanURL: https://orionisbio.com/news/
   baseURL: https://orionisbio.com/wp-json/wp/v2
   tags:
+  - oEmbed
+  tags_raw:
   - o Embed
   properties:
   - type: OpenAPI
