@@ -1,17 +1,7 @@
 {
   "provider": "orionis-biosciences",
   "sources": [
-    "orionis-biosciences-abilities-api-openapi.yml",
-    "orionis-biosciences-comments-api-openapi.yml",
-    "orionis-biosciences-discovery-api-openapi.yml",
-    "orionis-biosciences-media-api-openapi.yml",
-    "orionis-biosciences-news-api-openapi.yml",
-    "orionis-biosciences-oembed-api-openapi.yml",
-    "orionis-biosciences-pages-api-openapi.yml",
-    "orionis-biosciences-search-api-openapi.yml",
-    "orionis-biosciences-taxonomy-api-openapi.yml",
-    "orionis-biosciences-team-api-openapi.yml",
-    "orionis-biosciences-users-api-openapi.yml"
+    "_ae-authored/orionis-biosciences-content-openapi.yml"
   ],
   "outputs": [
     "orionis-biosciences-abilities-api-openapi.yml",
@@ -19,20 +9,37 @@
     "orionis-biosciences-discovery-api-openapi.yml",
     "orionis-biosciences-media-api-openapi.yml",
     "orionis-biosciences-news-api-openapi.yml",
-    "orionis-biosciences-oembed-api-openapi.yml",
     "orionis-biosciences-pages-api-openapi.yml",
     "orionis-biosciences-search-api-openapi.yml",
     "orionis-biosciences-taxonomy-api-openapi.yml",
     "orionis-biosciences-team-api-openapi.yml",
-    "orionis-biosciences-users-api-openapi.yml"
+    "orionis-biosciences-users-api-openapi.yml",
+    "orionis-biosciences-oembed-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
   "errors": [
-    "orionis-biosciences-search-api-openapi.yml: dangling $ref: #/components/schemas/SearchResult"
+    "orionis-biosciences-content-openapi.yml: dangling $ref: #/components/schemas/SearchResult"
   ],
   "warnings": [],
   "notes": [
-    "apis.yml register: already-registered"
+    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "orionis-biosciences-content-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "superseded outputs removed: orionis-biosciences-o-embed-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 11 total)"
   ],
-  "skipped": []
+  "skipped": [
+    "orionis-biosciences-abilities-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "orionis-biosciences-comments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "orionis-biosciences-discovery-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "orionis-biosciences-media-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "orionis-biosciences-news-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "orionis-biosciences-o-embed-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "orionis-biosciences-pages-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "orionis-biosciences-search-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "orionis-biosciences-taxonomy-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "orionis-biosciences-team-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "orionis-biosciences-users-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
