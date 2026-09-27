@@ -61,7 +61,7 @@ tags:
 - Protein Engineering
 - Molecular Glues
 - Computational Biology
-- Machine-Learning
+- Machine Learning
 - Clinical Trials
 - Content
 tags_raw:
@@ -78,187 +78,22 @@ tags_raw:
 - Machine Learning
 - Clinical Trials
 - Content
+- Machine-Learning
 apis:
-- aid: orionis-biosciences:orionis-biosciences-abilities-api
-  name: Orionis Biosciences Abilities API
-  description: The Abilities API from Orionis Biosciences — 6 operation(s) for abilities.
-  humanURL: https://orionisbio.com/news/
-  baseURL: https://orionisbio.com/wp-json/wp/v2
+- aid: orionis-biosciences:orionisbio-com-website-wordpress-rest
+  name: Orionis Biosciences Website (WordPress REST)
+  description: 'The public WordPress REST API (wp-json) of the Orionis Biosciences website at orionisbio.com:
+    the route index of the site''s content management system, catalogued as one site surface rather than
+    as separate APIs.'
+  baseURL: https://orionisbio.com/wp-json
   tags:
-  - Abilities
+  - WordPress
+  x-surface: platform-generated
   properties:
-  - type: OpenAPI
-    url: openapi/orionis-biosciences-abilities-api-openapi.yml
-  - type: DataModel
-    url: data-model/orionis-biosciences-data-model.yml
-  - type: ErrorCatalog
-    url: errors/orionis-biosciences-problem-types.yml
-  - type: Examples
-    url: examples/orionis-biosciences-examples.yml
-- aid: orionis-biosciences:orionis-biosciences-comments-api
-  name: Orionis Biosciences Comments API
-  description: The Comments API from Orionis Biosciences — 2 operation(s) for comments.
-  humanURL: https://orionisbio.com/news/
-  baseURL: https://orionisbio.com/wp-json/wp/v2
-  tags:
-  - Comments
-  properties:
-  - type: OpenAPI
-    url: openapi/orionis-biosciences-comments-api-openapi.yml
-  - type: DataModel
-    url: data-model/orionis-biosciences-data-model.yml
-  - type: ErrorCatalog
-    url: errors/orionis-biosciences-problem-types.yml
-  - type: Examples
-    url: examples/orionis-biosciences-examples.yml
-- aid: orionis-biosciences:orionis-biosciences-discovery-api
-  name: Orionis Biosciences Discovery API
-  description: The Discovery API from Orionis Biosciences — 8 operation(s) for discovery.
-  humanURL: https://orionisbio.com/news/
-  baseURL: https://orionisbio.com/wp-json/wp/v2
-  tags:
-  - Discovery
-  properties:
-  - type: OpenAPI
-    url: openapi/orionis-biosciences-discovery-api-openapi.yml
-  - type: DataModel
-    url: data-model/orionis-biosciences-data-model.yml
-  - type: ErrorCatalog
-    url: errors/orionis-biosciences-problem-types.yml
-  - type: Examples
-    url: examples/orionis-biosciences-examples.yml
-- aid: orionis-biosciences:orionis-biosciences-media-api
-  name: Orionis Biosciences Media API
-  description: The Media API from Orionis Biosciences — 4 operation(s) for media.
-  humanURL: https://orionisbio.com/news/
-  baseURL: https://orionisbio.com/wp-json/wp/v2
-  tags:
-  - Media
-  properties:
-  - type: OpenAPI
-    url: openapi/orionis-biosciences-media-api-openapi.yml
-  - type: DataModel
-    url: data-model/orionis-biosciences-data-model.yml
-  - type: ErrorCatalog
-    url: errors/orionis-biosciences-problem-types.yml
-  - type: Examples
-    url: examples/orionis-biosciences-examples.yml
-- aid: orionis-biosciences:orionis-biosciences-news-api
-  name: Orionis Biosciences News API
-  description: The News API from Orionis Biosciences — 2 operation(s) for news.
-  humanURL: https://orionisbio.com/news/
-  baseURL: https://orionisbio.com/wp-json/wp/v2
-  tags:
-  - News
-  properties:
-  - type: OpenAPI
-    url: openapi/orionis-biosciences-news-api-openapi.yml
-  - type: DataModel
-    url: data-model/orionis-biosciences-data-model.yml
-  - type: ErrorCatalog
-    url: errors/orionis-biosciences-problem-types.yml
-  - type: Examples
-    url: examples/orionis-biosciences-examples.yml
-- aid: orionis-biosciences:orionis-biosciences-pages-api
-  name: Orionis Biosciences Pages API
-  description: The Pages API from Orionis Biosciences — 2 operation(s) for pages.
-  humanURL: https://orionisbio.com/news/
-  baseURL: https://orionisbio.com/wp-json/wp/v2
-  tags:
-  - Pages
-  properties:
-  - type: OpenAPI
-    url: openapi/orionis-biosciences-pages-api-openapi.yml
-  - type: DataModel
-    url: data-model/orionis-biosciences-data-model.yml
-  - type: ErrorCatalog
-    url: errors/orionis-biosciences-problem-types.yml
-  - type: Examples
-    url: examples/orionis-biosciences-examples.yml
-- aid: orionis-biosciences:orionis-biosciences-search-api
-  name: Orionis Biosciences Search API
-  description: The Search API from Orionis Biosciences — 1 operation(s) for search.
-  humanURL: https://orionisbio.com/news/
-  baseURL: https://orionisbio.com/wp-json/wp/v2
-  tags:
-  - Search
-  properties:
-  - type: OpenAPI
-    url: openapi/orionis-biosciences-search-api-openapi.yml
-  - type: DataModel
-    url: data-model/orionis-biosciences-data-model.yml
-  - type: ErrorCatalog
-    url: errors/orionis-biosciences-problem-types.yml
-  - type: Examples
-    url: examples/orionis-biosciences-examples.yml
-- aid: orionis-biosciences:orionis-biosciences-taxonomy-api
-  name: Orionis Biosciences Taxonomy API
-  description: The Taxonomy API from Orionis Biosciences — 4 operation(s) for taxonomy.
-  humanURL: https://orionisbio.com/news/
-  baseURL: https://orionisbio.com/wp-json/wp/v2
-  tags:
-  - Taxonomy
-  properties:
-  - type: OpenAPI
-    url: openapi/orionis-biosciences-taxonomy-api-openapi.yml
-  - type: DataModel
-    url: data-model/orionis-biosciences-data-model.yml
-  - type: ErrorCatalog
-    url: errors/orionis-biosciences-problem-types.yml
-  - type: Examples
-    url: examples/orionis-biosciences-examples.yml
-- aid: orionis-biosciences:orionis-biosciences-team-api
-  name: Orionis Biosciences Team API
-  description: The Team API from Orionis Biosciences — 2 operation(s) for team.
-  humanURL: https://orionisbio.com/news/
-  baseURL: https://orionisbio.com/wp-json/wp/v2
-  tags:
-  - Team
-  properties:
-  - type: OpenAPI
-    url: openapi/orionis-biosciences-team-api-openapi.yml
-  - type: DataModel
-    url: data-model/orionis-biosciences-data-model.yml
-  - type: ErrorCatalog
-    url: errors/orionis-biosciences-problem-types.yml
-  - type: Examples
-    url: examples/orionis-biosciences-examples.yml
-- aid: orionis-biosciences:orionis-biosciences-users-api
-  name: Orionis Biosciences Users API
-  description: The Users API from Orionis Biosciences — 3 operation(s) for users.
-  humanURL: https://orionisbio.com/news/
-  baseURL: https://orionisbio.com/wp-json/wp/v2
-  tags:
-  - User
-  tags_raw:
-  - Users
-  properties:
-  - type: OpenAPI
-    url: openapi/orionis-biosciences-users-api-openapi.yml
-  - type: DataModel
-    url: data-model/orionis-biosciences-data-model.yml
-  - type: ErrorCatalog
-    url: errors/orionis-biosciences-problem-types.yml
-  - type: Examples
-    url: examples/orionis-biosciences-examples.yml
-- aid: orionis-biosciences:orionis-biosciences-o-embed-api
-  name: Orionis Biosciences o Embed API
-  description: The o Embed API from Orionis Biosciences — 3 operation(s) for o embed.
-  humanURL: https://orionisbio.com/news/
-  baseURL: https://orionisbio.com/wp-json/wp/v2
-  tags:
-  - oEmbed
-  tags_raw:
-  - o Embed
-  properties:
-  - type: OpenAPI
-    url: openapi/orionis-biosciences-o-embed-api-openapi.yml
-  - type: DataModel
-    url: data-model/orionis-biosciences-data-model.yml
-  - type: ErrorCatalog
-    url: errors/orionis-biosciences-problem-types.yml
-  - type: Examples
-    url: examples/orionis-biosciences-examples.yml
+  - type: Documentation
+    url: https://orionisbio.com/wp-json
+  x-platform: wordpress
+  x-platform-surface: rest
 x-enrichment:
   date: '2026-08-04'
   status: enriched
@@ -345,3 +180,7 @@ common:
   url: agentic-access/orionis-biosciences-agentic-access.yml
 - type: AgentSkill
   url: skills/_index.yml
+- type: DataModel
+  url: data-model/orionis-biosciences-data-model.yml
+- type: ErrorCatalog
+  url: errors/orionis-biosciences-problem-types.yml
