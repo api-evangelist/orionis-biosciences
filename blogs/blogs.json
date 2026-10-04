@@ -10,7 +10,7 @@
     },
     {
       "source": "https://orionisbio.com/about-us/",
-      "feed_url": "https://orionisbio.com/about-us/feed/",
+      "feed_url": "https://orionisbio.com/feed/",
       "title": "",
       "saved": 0,
       "method": "discovered"
@@ -18,6 +18,20 @@
     {
       "source": "https://orionisbio.com/news/feed/",
       "feed_url": "https://orionisbio.com/news/feed/",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://orionisbio.com/feed/",
+      "feed_url": "https://orionisbio.com/feed/",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://orionisbio.com/about-us/feed/",
+      "feed_url": "https://orionisbio.com/about-us/feed/",
       "title": "",
       "saved": 0,
       "method": "feed"
@@ -31,7 +45,7 @@
     }
   ],
   "post_count": 10,
-  "fetched": "2026-09-19T20:17:39Z",
+  "fetched": "2026-10-03T12:30:02Z",
   "feed_nature": "undetermined",
   "feed_nature_basis": null,
   "feed_nature_note": "Whether these posts are the vendor publishing or its support community, decided on the URL path grammar of the saved posts -- not the hostname, which carries both on Khoros, and not author diversity, which flags large vendor blogs as forums. 'undetermined' means undetermined."
